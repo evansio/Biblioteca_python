@@ -250,5 +250,109 @@ def listar_libros_usuario(biblioteca, nombre_usuario):
         if usuario.nombre == nombre_usuario:
             if usuario.libros_prestados:
                 print(f"Libros prestados a {nombre_usuario}:")
-                for libro in usuario
+                for libro in usuario.libros_prestados:
+                    print(f"Título: {libro.titulo}, Autor: {libro.autor}")
+            else:
+                print(f"{nombre_usuario} no tiene libros prestados.")
+            return
+    else:
+        print("Usuario no encontrado.")
+
+def devolver_libro(biblioteca, titulo_libro, nombre_usuario):
+    """
+    Permite a un usuario devolver un libro prestado.
+
+    Parámetros:
+    - biblioteca: Diccionario que contiene la información de la biblioteca.
+    - titulo_libro: El título del libro a devolver.
+    - nombre_usuario: El nombre del usuario que quiere devolver el libro.
+    """
+    for usuario in biblioteca['usuarios']:
+        if usuario.nombre == nombre_usuario:
+            for libro in usuario.libros_prestados:
+                if libro.titulo == titulo_libro:
+                    usuario.libros_prestados.remove(libro)
+                    for libro_biblioteca in biblioteca['libros']:
+                        if libro_biblioteca.titulo == titulo_libro:
+                            libro_biblioteca.cantidad += 1
+                            libro_biblioteca.disponible = True
+                            print("Libro devuelto exitosamente.")
+                            return
+                    else:
+                        print("Libro no encontrado en la biblioteca.")
+                        return
+            else:
+                print("Libro no prestado a este usuario.")
+                return
+    else:
+        print("Usuario no encontrado.")
+
+def editar_usuario(biblioteca, nombre_usuario):
+    """
+    Permite editar el nombre de un usuario registrado.
+
+    Parámetros:
+    - biblioteca: Diccionario que contiene la información de la biblioteca.
+    - nombre_usuario: El nombre del usuario a editar.
+    """
+    for usuario in biblioteca['usuarios']:
+        if usuario.nombre == nombre_usuario:
+            print(f"Editando información de {nombre_usuario}:")
+            nuevo_nombre = input("Ingrese el nuevo nombre del usuario: ")
+            usuario.nombre = nuevo_nombre
+            print("Información del usuario actualizada exitosamente.")
+            return
+    else:
+        print("Usuario no encontrado.")
+
+def mostrar_menu():
+    """
+    Muestra el menú de opciones disponibles.
+    """
+    print("\n--- Menú ---")
+    print("1. Agregar Libro")
+    print("2. Mostrar Libros")
+    print("3. Prestar Libro")
+    print("4. Registrar Usuario")
+    print("5. Listar Usuarios")
+    print("6. Listar Libros de Usuario")
+    print("7. Devolver Libro")
+    print("8. Editar Usuario")
+    print("9. Salir")
+
+def main():
+    """
+    Función principal para ejecutar el sistema de gestión de biblioteca.
+    """
+    biblioteca = cargar_datos()
+
+    while True:
+        mostrar_menu()
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            titulo = input("Ingrese el título del libro: ")
+            autor = input("Ingrese el autor del libro: ")
+            agregar_libro(biblioteca, titulo, autor)
+        elif opcion == "2":
+            mostrar_libros(biblioteca)
+        elif opcion == "3":
+            titulo_libro = input("Ingrese el título del libro: ")
+            nombre_usuario = input("Ingrese el nombre del usuario: ")
+            prestar_libro(biblioteca, titulo_libro, nombre_usuario)
+        elif opcion == "4":
+            nombre_usuario = input("Ingrese el nombre del usuario: ")
+            registrar_usuario(biblioteca, nombre_usuario)
+        elif opcion == "5":
+            listar_usuarios(biblioteca)
+        elif opcion == "6":
+            nombre_usuario = input("Ingrese el nombre del usuario: ")
+            listar_libros_usuario(biblioteca, nombre_usuario)
+        elif opcion == "7":
+            titulo_libro = input("Ingrese el título del libro: ")
+            nombre_usuario = input("Ingrese el nombre del usuario: ")
+            devolver_libro(biblioteca, titulo_libro, nombre_usuario)
+        elif opcion == "8":
+            nombre_usuario = input("Ingrese el nombre del usuario a editar
+
 ```
