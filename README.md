@@ -24,7 +24,7 @@ Este proyecto es un sistema de gestión de biblioteca desarrollado en Python. Pe
 1. Clona el repositorio:
     ```bash
     git clone https://github.com/evansio/Biblioteca_python.git
-    cd library-Biblioteca_python
+    cd Biblioteca_python
     ```
 
 2. Instala las dependencias (si es necesario, en este caso, no hay dependencias externas).
