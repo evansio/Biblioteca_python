@@ -19,15 +19,23 @@ Este proyecto es un sistema de gestión de biblioteca desarrollado en Python. Pe
 
 - Python 3.x
 
-## Instalación
+## Instrucciones para Configurar y Ejecutar el Proyecto en Visual Studio Code
 
-1. Clona el repositorio:
+### Paso 1: Clonar el Repositorio
+
+1. Abre Visual Studio Code.
+2. Abre una terminal integrada en VSCode (Ctrl + `).
+3. Clona el repositorio desde GitHub:
+
     ```bash
     git clone https://github.com/evansio/Biblioteca_python.git
     cd Biblioteca_python
     ```
 
-2. Instala las dependencias (si es necesario, en este caso, no hay dependencias externas).
+### Paso 2: Crear archivo README.md
+Asegúrate de que tu README.md contenga instrucciones claras para la configuración y ejecución del proyecto.
+
+### Paso 3: Instala las dependencias (si es necesario, en este caso, no hay dependencias externas).
 
 ## Uso
 
@@ -356,3 +364,13 @@ def main():
             nombre_usuario = input("Ingrese el nombre del usuario a editar
 
 ```
+## Mejoras y Adiciones Futuras
+
+- Integración con servicios de terceros para notificaciones.
+- Implementación de recordatorios para devolver los libros.
+- Mejora de la interfaz de usuario con más opciones de personalización.
+
+---
+
+## Contacto
+Para cualquier consulta o sugerencia, por favor contacta a Edgar Ortega a través de [edgarortega1991@gmail.com].
